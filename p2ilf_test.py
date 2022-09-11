@@ -123,8 +123,10 @@ class P2ILFChallenge(SegmentationAlgorithm):
 
             # TODO: you can write the registration file to the idx - [2] instead of dummy file
             # Let us know if you will need help to figure this out
-
-
+            if execute_in_docker:
+                shutil.copyfile('./output/transformed-3d-liver-model.obj', self._output_file[2])
+            else:
+                shutil.copyfile('/output/transformed-3d-liver-model.obj', self._output_file[2])
 
         print('\n All files written successfully')
 
@@ -241,7 +243,7 @@ class P2ILFChallenge(SegmentationAlgorithm):
         out_file = "tryme/p2ilf_optimization_demo.gif"
 
         # run optimization
-        init_mesh_position = np.array([0, 0, 0.3])
+        init_mesh_position = np.array([0, 0, 0.35])
         init_mesh_rotation = np.array([-1.5708e+00, 6.8662e-08, 6.8662e-08])
         pose_fitter = Pose_Fitter_Mask(mesh, silhouette_renderer, phong_renderer, camera,
                                        image_ref,
