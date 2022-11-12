@@ -30,7 +30,7 @@ if __name__ == '__main__':
         device = torch.device("cpu")
     print("device: ", device)
 
-    ckpt = os.path.join("models/", "model_1500.pth")
+    ckpt = os.path.join("models/", "model_final.pth")
 
     detector = get_mask_detector(ckpt, device)
 
